@@ -56,11 +56,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <!-- Workaround because of the build image issue -->
                 <configuration>
-                    <docker>
-                        <host>//./pipe/dockerDesktopLinuxEngine</host>
-                    </docker>
+                    <image>
+                        <name>${project.artifactId}:k8s</name>
+                    </image>
                 </configuration>
                 <!-- As per the documentation -->
                 <executions>
