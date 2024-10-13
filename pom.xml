@@ -56,20 +56,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <!-- Workaround because of the build image issue -->
-                <configuration>
-                    <docker>
-                        <host>//./pipe/dockerDesktopLinuxEngine</host>
-                    </docker>
-                </configuration>
-                <!-- As per the documentation -->
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build-image-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
