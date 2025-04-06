@@ -52,17 +52,17 @@ public class SecurityConfig {
 
         http
                 .securityMatcher(authorizationServerConfigurer.getEndpointsMatcher())
-                .with(authorizationServerConfigurer, (authorizationServer) ->
+                .with(authorizationServerConfigurer, authorizationServer ->
                         authorizationServer
                                 .oidc(Customizer.withDefaults())	// Enable OpenID Connect 1.0
                 )
-                .authorizeHttpRequests((authorize) ->
+                .authorizeHttpRequests(authorize ->
                         authorize
                                 .anyRequest().authenticated()
                 )
                 // Redirect to the login page when not authenticated from the
                 // authorization endpoint
-                .exceptionHandling((exceptions) -> exceptions
+                .exceptionHandling(exceptions -> exceptions
                         .defaultAuthenticationEntryPointFor(
                                 new LoginUrlAuthenticationEntryPoint("/login"),
                                 new MediaTypeRequestMatcher(MediaType.TEXT_HTML))
@@ -153,7 +153,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
-        return AuthorizationServerSettings.builder().build();
+        return AuthorizationServerSettings.builder().issuer("http://auth-server-jt:9000").build();
     }
 }
 
