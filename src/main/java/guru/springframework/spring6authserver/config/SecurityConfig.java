@@ -153,7 +153,7 @@ public class SecurityConfig {
 
     @Bean
     public AuthorizationServerSettings authorizationServerSettings() {
-        return AuthorizationServerSettings.builder().issuer("http://auth-server-jt:9000").build();
+        return AuthorizationServerSettings.builder().build();
     }
 }
 
